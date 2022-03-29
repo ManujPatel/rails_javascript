@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     member do
       get :profile
       patch :update_profile
+      get :change_password
+      post :update_password
     end
   end
 

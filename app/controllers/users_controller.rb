@@ -65,6 +65,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def change_password
+    
+  end
+
+  def update_password
+    if(@user.password==params[:password])
+      @user.update_attribute(:password,params[:new_password])
+      redirect_to new_users_path
+    else 
+      flash.now[:alert]=["Incorrect old password"]
+      puts flash[:alert]
+      render "change_password"
+    end
+  end
+
+
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy
