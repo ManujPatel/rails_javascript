@@ -7,8 +7,9 @@
     <%= render user %>
     <p>
       <%= link_to "Show this user", user %>
+      <%= link_to "Show User Profile", profile_user_path(id: user.id) %>
+
     </p>
   <% end %>
 </div>
-
 <%= link_to "New user", new_user_path %>

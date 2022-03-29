@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update destroy profile update_profile ]
 
   # GET /users or /users.json
   def index
@@ -43,6 +43,24 @@ class UsersController < ApplicationController
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def profile
+  
+  end
+  
+  def update_profile
+    if @user.update(user_params)
+      respond_to do |format|
+        format.js
+        flash.now[:alert]=["Successfully Updated"]
+      end
+    else 
+      flash.now[:alert] = @user.errors.full_messages
+      respond_to do |format|
+        format.js
       end
     end
   end
